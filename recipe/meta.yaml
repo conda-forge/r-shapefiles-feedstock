@@ -1,4 +1,4 @@
-{% set version = '0.7' %}
+{% set version = "0.7.2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -11,12 +11,12 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/shapefiles_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/shapefiles/shapefiles_{{ version }}.tar.gz
-  sha256: eeb18ea4165119519a978d4a2ba1ecbb47649deb96a7f617f5b3100d63b3f021
+  sha256: 4bfa4094c1052c1b1918b1670798f8b4e53f771cfdf9cb8c04bd00a856674d0f
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   script: R CMD INSTALL --build .
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -39,7 +39,7 @@ test:
 about:
   home: https://CRAN.R-project.org/package=shapefiles
   license: GPL-3.0
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
   license_family: GPL
   summary: Functions to read and write ESRI shapefiles
 
